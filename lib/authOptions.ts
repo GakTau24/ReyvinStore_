@@ -26,10 +26,10 @@ const authOptions: AuthOptions = {
             async authorize(credentials) {
                 try {
                     if (!credentials) throw new Error("No credentials to log in as");
-                    const { username, password } = credentials;
+                    const { email, password } = credentials as any;
                     const user = await prisma.user.findFirst({
                         where: {
-                            email: username,
+                            email: email,
                         },
                     });
                     if (!user) throw new Error("User not found!");

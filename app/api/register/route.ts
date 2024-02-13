@@ -5,10 +5,6 @@ import bcrypt from "bcryptjs";
 export async function POST(req: NextRequest) {
   const { name, email, password } = await req.json();
 
-  if(req.method !== "POST") {
-    return  Response.json({error: "Method Not Allowed"})
-  }
-
   try {
     const hashPassword = await bcrypt.hash(password, 15);
     const user = await prisma.user.create({
@@ -24,8 +20,4 @@ export async function POST(req: NextRequest) {
     console.error("Error creating user:", error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
-}
-
-export function GET() {
-  return Response.json({message: "Hello World"})
 }

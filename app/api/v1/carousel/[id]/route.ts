@@ -1,17 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/server/db";
-import { getServerSession } from "next-auth";
-import { GET } from "@/app/api/auth/[...nextauth]/route";
 import { Carousel } from "@prisma/client";
 
 export const PATCH = async (
   request: Request,
   { params }: { params: { id: string } }
 ) => {
-  const session = await getServerSession(GET);
-  if (!session) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-  }
 
   try {
       const body = await request.json();

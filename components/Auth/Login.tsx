@@ -40,9 +40,9 @@ const Login = () => {
         callbackUrl: "/",
       });
       if (loginRes && !loginRes.ok) {
-        toast.success(loginRes.error || "");
+        toast.error(loginRes.error || "");
       } else {
-        router.push("/dashboard/admin");
+        router.push("/");
       }
       setEmail("");
       setPassword("");
@@ -61,7 +61,7 @@ const Login = () => {
   return (
     <>
     <ToastContainer autoClose={2000} />
-    <div className="fixed top-16 right-5 max-md:h-10 max-md:right-0">{submitError && toast.error(submitError) }</div>
+    {/* <div className="fixed top-16 right-5 max-md:h-10 max-md:right-0">{submitError && toast.error(submitError) }</div> */}
     <div className="flex justify-center items-center h-screen">
       <form
         className="bg-opacity-70 backdrop-filter backdrop-blur-xl backdrop-brightness-110 shadow-2xl rounded px-10 py-7 mb-4"
