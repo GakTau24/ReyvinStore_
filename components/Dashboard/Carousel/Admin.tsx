@@ -57,8 +57,6 @@ const Admin = () => {
     fetchProducts();
   }, []);
 
-  console.log(carousel)
-
   return (
     <div className="flex md:flex-row">
       <Sidebar />

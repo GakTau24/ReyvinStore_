@@ -6,7 +6,6 @@ async function getDataProduct(): Promise<Product[]> {
     throw new Error("Failed to fetch data from API");
   }
   const data = await response.json();
-  console.log(data)
   return data;
 }
 
@@ -15,7 +14,6 @@ export default async function sitemap() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   try {
     const  { products } : any = await getDataProduct();
-    console.log(products)
 
     const dataSite = products.map((item: Product) => {
       return {

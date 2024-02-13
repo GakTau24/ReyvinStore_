@@ -1,7 +1,6 @@
 import prisma from "@/server/db";
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { handler } from "../../auth/[...nextauth]/route";
 import { getSession } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { Product } from "@prisma/client";
@@ -21,10 +20,6 @@ export async function GET(req: NextRequest, res: Response) {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(handler)
-  if(!session) {
-    return NextResponse.json({message: "Unauthorize!"}, {status: 401})
-  }
 
   const body = await req.json();
   
@@ -66,10 +61,6 @@ export async function POST(req: NextRequest) {
 // }
 
 export async function DELETE(req: NextRequest) {
-  const session = await getServerSession(handler)
-  if(!session) {
-    return NextResponse.json({message: "Unauthorize!"}, {status: 401})
-  }
   
  try {
   const body = await req.json()
