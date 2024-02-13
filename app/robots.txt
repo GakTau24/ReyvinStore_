@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /dashboard/admin
+
+Sitemap: http://reyvinstore.eu.org/sitemap.xml
